@@ -251,7 +251,9 @@ const Applications = (props) => {
       style={{ padding: "30px", minHeight: "93vh" }}
     >
       <Grid item>
-        <Typography variant="h2">Applications</Typography>
+        <Typography variant="h2" style={{ color: "white" }}>
+          Applications
+        </Typography>
       </Grid>
       <Grid
         container

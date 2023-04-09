@@ -10,8 +10,19 @@ const Welcome = (props) => {
       justify="center"
       style={{ padding: "30px", overflowY: "hidden" }}
     >
-      <Grid item>
-        <Typography variant="h2">Welcome to Job Portal</Typography>
+      <Grid
+        container
+        item
+        alignItems="center"
+        justify="center "
+        direction="column"
+      >
+        <Typography variant="h2" style={{ color: "#7149C6" }}>
+          Welcome to CPP
+        </Typography>
+        <Typography variant="h5" style={{ color: "white" }}>
+          Find your Job here!!!!
+        </Typography>
       </Grid>
     </Grid>
   );

@@ -478,7 +478,7 @@ const ApplicationTile = (props) => {
           </Grid>
         </Grid>
         <Grid item container direction="column" xs={3}>
-          <Grid item>
+          {/* <Grid item>
             <Button
               variant="contained"
               className={classes.statusBlock}
@@ -487,7 +487,7 @@ const ApplicationTile = (props) => {
             >
               Download Resume
             </Button>
-          </Grid>
+          </Grid> */}
           <Grid item container xs>
             {/* {buttonSet[application.status]} */}
             <Button
@@ -686,11 +686,13 @@ const AcceptedApplicants = (props) => {
         style={{ padding: "30px", minHeight: "93vh" }}
       >
         <Grid item>
-          <Typography variant="h2">Employees</Typography>
+          <Typography variant="h2" style={{ color: "white" }}>
+            Employees
+          </Typography>
         </Grid>
         <Grid item>
           <IconButton onClick={() => setFilterOpen(true)}>
-            <FilterListIcon />
+            <FilterListIcon style={{ color: "white" }} />
           </IconButton>
         </Grid>
         <Grid

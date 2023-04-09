@@ -16,13 +16,16 @@ import { SetPopupContext } from "../App";
 
 import apiList from "../lib/apiList";
 import isAuth from "../lib/isAuth";
+import bg from "../assets/loginBg.gif";
 
 const useStyles = makeStyles((theme) => ({
   body: {
     padding: "60px 60px",
+    backgroundImage: { bg },
   },
   inputBox: {
     width: "300px",
+    border: "none",
   },
   submitButton: {
     width: "300px",
@@ -104,9 +107,9 @@ const Login = (props) => {
   };
 
   return loggedin ? (
-    <Redirect to="/" />
+    <Redirect to="/home" />
   ) : (
-    <Paper elevation={10} className={classes.body}>
+    <Paper className={classes.body}>
       <Grid container direction="column" spacing={4} alignItems="center">
         <Grid item>
           <Typography variant="h3" component="h2">

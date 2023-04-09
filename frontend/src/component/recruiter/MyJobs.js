@@ -67,7 +67,7 @@ const JobTile = (props) => {
   const [openUpdate, setOpenUpdate] = useState(false);
   const [jobDetails, setJobDetails] = useState(job);
 
-  console.log(jobDetails);
+  // console.log(jobDetails);
 
   const handleInput = (key, value) => {
     setJobDetails({
@@ -89,7 +89,7 @@ const JobTile = (props) => {
   };
 
   const handleDelete = () => {
-    console.log(job._id);
+    // console.log(job._id);
     axios
       .delete(`${apiList.jobs}/${job._id}`, {
         headers: {
@@ -106,7 +106,7 @@ const JobTile = (props) => {
         handleClose();
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
         setPopup({
           open: true,
           severity: "error",
@@ -133,7 +133,7 @@ const JobTile = (props) => {
         handleCloseUpdate();
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
         setPopup({
           open: true,
           severity: "error",
@@ -756,13 +756,13 @@ const MyJobs = (props) => {
     });
     searchParams = [...searchParams, ...asc, ...desc];
     const queryString = searchParams.join("&");
-    console.log(queryString);
+    // console.log(queryString);
     let address = apiList.jobs;
     if (queryString !== "") {
       address = `${address}?${queryString}`;
     }
 
-    console.log(address);
+    // console.log(address);
     axios
       .get(address, {
         headers: {
@@ -770,11 +770,11 @@ const MyJobs = (props) => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setJobs(response.data);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        // console.log(err.response.data);
         setPopup({
           open: true,
           severity: "error",
@@ -800,41 +800,49 @@ const MyJobs = (props) => {
           alignItems="center"
         >
           <Grid item xs>
-            <Typography variant="h2">My Jobs</Typography>
+            <Typography variant="h2" style={{ color: "white" }}>
+              My Jobs
+            </Typography>
           </Grid>
-          <Grid item xs>
-            <TextField
-              label="Search Jobs"
-              value={searchOptions.query}
-              onChange={(event) =>
-                setSearchOptions({
-                  ...searchOptions,
-                  query: event.target.value,
-                })
-              }
-              onKeyPress={(ev) => {
-                if (ev.key === "Enter") {
-                  getData();
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Grid item xs>
+              <TextField
+                label="Search Jobs"
+                value={searchOptions.query}
+                onChange={(event) =>
+                  setSearchOptions({
+                    ...searchOptions,
+                    query: event.target.value,
+                  })
                 }
-              }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment>
-                    <IconButton onClick={() => getData()}>
-                      <SearchIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              style={{ width: "500px" }}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item>
-            <IconButton onClick={() => setFilterOpen(true)}>
-              <FilterListIcon />
-            </IconButton>
-          </Grid>
+                onKeyPress={(ev) => {
+                  if (ev.key === "Enter") {
+                    getData();
+                  }
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment>
+                      <IconButton onClick={() => getData()}>
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                style={{
+                  width: "500px",
+                  backgroundColor: "white",
+                  borderRadius: "50px",
+                }}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <IconButton onClick={() => setFilterOpen(true)}>
+                <FilterListIcon style={{ color: "white" }} />
+              </IconButton>
+            </Grid>
+          </div>
         </Grid>
 
         <Grid

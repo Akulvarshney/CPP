@@ -1,57 +1,18 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Grid, Button, TextField, LinearProgress } from "@material-ui/core";
 import { CloudUpload } from "@material-ui/icons";
-import Axios from "axios";
-import { SetPopupContext } from "../App";
-
 const FileUploadInput = (props) => {
-  const setPopup = useContext(SetPopupContext);
-
-  const { uploadTo, identifier, handleInput } = props;
-
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState();
+  const { identifier, handleInput } = props;
   const [uploadPercentage, setUploadPercentage] = useState(0);
 
-  const handleUpload = () => {
-    console.log(file);
-    const data = new FormData();
-    data.append("file", file);
-    Axios.post(uploadTo, data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      onUploadProgress: (progressEvent) => {
-        setUploadPercentage(
-          parseInt(
-            Math.round((progressEvent.loaded * 100) / progressEvent.total)
-          )
-        );
-      },
-    })
-      .then((response) => {
-        console.log(response.data);
-        handleInput(identifier, response.data.url);
-        setPopup({
-          open: true,
-          severity: "success",
-          message: response.data.message,
-        });
-      })
-      .catch((err) => {
-        if (err.response) {
-          setPopup({
-            open: true,
-            severity: "error",
-            message: err.response.statusText,
-          });
-        } else {
-          setPopup({
-            open: true,
-            severity: "error",
-            message: "An error occurred while uploading the file.",
-          });
-        }
-      });
+  const handleUpload = (e) => {
+    if (!e) return; // return early if no event object is passed
+    const reader = new FileReader();
+    reader.readAsBinaryString(e.target.files[0]);
+    reader.onload = () => {
+      handleInput(identifier, window.btoa(reader.result));
+    };
   };
 
   return (
@@ -69,15 +30,10 @@ const FileUploadInput = (props) => {
               type="file"
               style={{ display: "none" }}
               onChange={(event) => {
-                console.log(event.target.files);
                 setUploadPercentage(0);
                 setFile(event.target.files[0]);
+                handleUpload(event);
               }}
-              // onChange={onChange}
-              // onChange={
-              //   (e) => {}
-              //   //   setSource({ ...source, place_img: e.target.files[0] })
-              // }
             />
           </Button>
         </Grid>

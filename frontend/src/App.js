@@ -18,6 +18,7 @@ import RecruiterProfile from "./component/recruiter/Profile";
 import MessagePopup from "./lib/MessagePopup";
 import { userType } from "./lib/isAuth";
 import ResumeBuilder from "./component/ResumeBuilder";
+import bg from "./assets/loginBg.gif";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -25,10 +26,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "98vh",
+    minHeight: "100vh",
     paddingTop: "64px",
     boxSizing: "border-box",
     width: "100%",
+    backgroundImage: `url(${bg})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
 }));
 

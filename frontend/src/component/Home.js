@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   jobTileOuter: {
     padding: "30px",
-    margin: "20px 0",
+    // margin: "20px 0",
     boxSizing: "border-box",
     width: "100%",
   },
@@ -630,51 +630,61 @@ const Home = (props) => {
         item
         direction="column"
         alignItems="center"
+        color="primary"
         style={{ padding: "30px", minHeight: "93vh" }}
       >
         <Grid
           item
           container
+          color="primary"
           direction="column"
           justify="center"
           alignItems="center"
         >
           <Grid item xs>
-            <Typography variant="h2">Jobs</Typography>
+            <Typography variant="h2" style={{ color: "white" }}>
+              Jobs
+            </Typography>
           </Grid>
-          <Grid item xs>
-            <TextField
-              label="Search Jobs"
-              value={searchOptions.query}
-              onChange={(event) =>
-                setSearchOptions({
-                  ...searchOptions,
-                  query: event.target.value,
-                })
-              }
-              onKeyPress={(ev) => {
-                if (ev.key === "Enter") {
-                  getData();
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Grid item xs>
+              <TextField
+                label="Search Jobs"
+                value={searchOptions.query}
+                onChange={(event) =>
+                  setSearchOptions({
+                    ...searchOptions,
+                    query: event.target.value,
+                  })
                 }
-              }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment>
-                    <IconButton onClick={() => getData()}>
-                      <SearchIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              style={{ width: "500px" }}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item>
-            <IconButton onClick={() => setFilterOpen(true)}>
-              <FilterListIcon />
-            </IconButton>
-          </Grid>
+                onKeyPress={(ev) => {
+                  if (ev.key === "Enter") {
+                    getData();
+                  }
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment>
+                      <IconButton onClick={() => getData()}>
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                style={{
+                  width: "500px",
+                  backgroundColor: "white",
+                  borderRadius: "50px",
+                }}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <IconButton onClick={() => setFilterOpen(true)}>
+                <FilterListIcon style={{ color: "white" }} />
+              </IconButton>
+            </Grid>
+          </div>
         </Grid>
 
         <Grid

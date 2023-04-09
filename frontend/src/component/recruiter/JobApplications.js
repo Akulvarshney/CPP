@@ -590,16 +590,20 @@ const ApplicationTile = (props) => {
           </Grid>
         </Grid>
         <Grid item container direction="column" xs={3}>
-          <Grid item>
-            <Button
-              variant="contained"
-              className={classes.statusBlock}
-              color="primary"
-              onClick={() => getResume()}
+          {/* <Grid item>
+            <a
+              href={`data:application/octet-stream;base64,${application.jobApplicant.resume}`}
+              download="resume.pdf"
             >
-              Download Resume
-            </Button>
-          </Grid>
+              <Button
+                variant="contained"
+                className={classes.statusBlock}
+                color="primary"
+              >
+                Download Resume
+              </Button>
+            </a>
+          </Grid> */}
           <Grid item container xs>
             {buttonSet[application.status]}
           </Grid>
@@ -730,7 +734,9 @@ const JobApplications = (props) => {
         style={{ padding: "30px", minHeight: "93vh" }}
       >
         <Grid item>
-          <Typography variant="h2">Applications</Typography>
+          <Typography variant="h2" style={{ color: "white" }}>
+            Applications
+          </Typography>
         </Grid>
         <Grid item>
           <IconButton onClick={() => setFilterOpen(true)}>

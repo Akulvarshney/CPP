@@ -26,10 +26,14 @@ import isAuth from "../lib/isAuth";
 
 const useStyles = makeStyles((theme) => ({
   body: {
+    margin: "40px 0px",
     padding: "60px 60px",
+    backgroundColor: "#fff",
+    // color: "white",
   },
   inputBox: {
     width: "400px",
+    // color: "white",
   },
   submitButton: {
     width: "400px",
@@ -322,7 +326,7 @@ const Login = (props) => {
   return loggedin ? (
     <Redirect to="/" />
   ) : (
-    <Paper elevation={3} className={classes.body}>
+    <Paper className={classes.body}>
       <Grid container direction="column" spacing={4} alignItems="center">
         <Grid item>
           <Typography variant="h3" component="h2">
@@ -405,40 +409,6 @@ const Login = (props) => {
                 onChange={(chips) =>
                   setSignupDetails({ ...signupDetails, skills: chips })
                 }
-              />
-            </Grid>
-            <Grid item>
-              <FileUploadInput
-                className={classes.inputBox}
-                label="Resume (.pdf)"
-                icon={<DescriptionIcon />}
-                // value={files.resume}
-                // onChange={(event) =>
-                //   setFiles({
-                //     ...files,
-                //     resume: event.target.files[0],
-                //   })
-                // }
-                uploadTo={apiList.uploadResume}
-                handleInput={handleInput}
-                identifier={"resume"}
-              />
-            </Grid>
-            <Grid item>
-              <FileUploadInput
-                className={classes.inputBox}
-                label="Profile Photo (.jpg/.png)"
-                icon={<FaceIcon />}
-                // value={files.profileImage}
-                // onChange={(event) =>
-                //   setFiles({
-                //     ...files,
-                //     profileImage: event.target.files[0],
-                //   })
-                // }
-                uploadTo={apiList.uploadProfileImage}
-                handleInput={handleInput}
-                identifier={"profile"}
               />
             </Grid>
           </>

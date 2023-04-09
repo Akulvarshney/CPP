@@ -123,7 +123,9 @@ const Profile = (props) => {
         style={{ padding: "30px", minHeight: "93vh" }}
       >
         <Grid item>
-          <Typography variant="h2">Profile</Typography>
+          <Typography variant="h2" style={{ color: "white" }}>
+            Profile
+          </Typography>
         </Grid>
         <Grid item xs style={{ width: "100%" }}>
           <Paper

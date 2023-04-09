@@ -68,7 +68,7 @@ passport.use(
     (jwt_payload, done) => {
       User.findById(jwt_payload._id)
         .then((user) => {
-          console.log(Object.keys(jwt_payload));
+          // console.log(Object.keys(jwt_payload));
           if (!user) {
             return done(null, false, {
               message: "JWT Token does not exist",

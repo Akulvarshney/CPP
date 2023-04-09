@@ -206,7 +206,10 @@ const Profile = (props) => {
         setPopup({
           open: true,
           severity: "error",
-          message: err.response.data.message,
+          message:
+            err.response && err.response.data && err.response.data.message
+              ? err.response.data.message
+              : "An error occurred",
         });
         console.log(err.response);
       });
@@ -223,7 +226,9 @@ const Profile = (props) => {
         style={{ padding: "30px", minHeight: "93vh" }}
       >
         <Grid item>
-          <Typography variant="h2">Profile</Typography>
+          <Typography variant="h2" style={{ color: "white" }}>
+            Profile
+          </Typography>
         </Grid>
         <Grid item xs>
           <Paper
@@ -273,26 +278,6 @@ const Profile = (props) => {
                     });
                   }}
                   fullWidth
-                />
-              </Grid>
-              <Grid item>
-                <FileUploadInput
-                  className={classes.inputBox}
-                  label="Resume (.pdf)"
-                  icon={<DescriptionIcon />}
-                  uploadTo={apiList.uploadResume}
-                  handleInput={handleInput}
-                  identifier={"resume"}
-                />
-              </Grid>
-              <Grid item>
-                <FileUploadInput
-                  className={classes.inputBox}
-                  label="Profile Photo (.jpg/.png)"
-                  icon={<FaceIcon />}
-                  uploadTo={apiList.uploadProfileImage}
-                  handleInput={handleInput}
-                  identifier={"profile"}
                 />
               </Grid>
             </Grid>

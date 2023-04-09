@@ -96,16 +96,18 @@ const CreateJobs = (props) => {
         item
         direction="column"
         alignItems="center"
-        style={{ padding: "30px", minHeight: "93vh", width: "" }}
+        style={{ padding: "30px", minHeight: "93vh" }}
       >
         <Grid item>
-          <Typography variant="h2">Add Job</Typography>
+          <Typography variant="h2" style={{ color: "white" }}>
+            Add Job
+          </Typography>
         </Grid>
         <Grid item container xs direction="column" justify="center">
           <Grid item>
             <Paper
               style={{
-                padding: "20px",
+                padding: "50px",
                 outline: "none",
                 display: "flex",
                 flexDirection: "column",
