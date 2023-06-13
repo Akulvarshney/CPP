@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  makeStyles,
-} from "@material-ui/core";
+import { AppBar, Toolbar, Button, makeStyles } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import isAuth, { userType } from "../lib/isAuth";
@@ -14,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     "&:hover": {
       color: "#7149C6",
+    },
+    a: {
+      color: "white",
     },
   },
   root: {
@@ -44,7 +41,7 @@ const Navbar = (props) => {
     <AppBar
       position="fixed"
       style={{
-        backgroundColor: "transparent",
+        backgroundColor: "black",
         borderBottom: "1mm solid #7149C6",
       }}
     >
@@ -52,9 +49,6 @@ const Navbar = (props) => {
         <a href="/">
           <img src={Logo} alt="" className={classes.logo} />
         </a>
-        {/* <Typography variant="h6" className={classes.title}>
-          CPP
-        </Typography> */}
 
         <div>
           {isAuth() ? (
@@ -77,12 +71,6 @@ const Navbar = (props) => {
                   onClick={() => handleClick("/myjobs")}
                 >
                   My Jobs
-                </Button>
-                <Button
-                  className={classes.button}
-                  onClick={() => handleClick("/resumebuilder")}
-                >
-                  Resume Builder
                 </Button>
                 <Button
                   className={classes.button}
@@ -139,6 +127,9 @@ const Navbar = (props) => {
             )
           ) : (
             <div>
+              <Button className={classes.button}>
+                <a href="http://localhost:3000/">Interview</a>
+              </Button>
               <Button
                 className={classes.button}
                 onClick={() => handleClick("/resumebuilder")}

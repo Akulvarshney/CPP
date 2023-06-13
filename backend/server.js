@@ -5,8 +5,7 @@ const passportConfig = require("./lib/passportConfig");
 const cors = require("cors");
 const fs = require("fs");
 
-const DB_URL =
-  "mongodb+srv://allenv213:2r3lKmUzzd7zQGLz@cpp.fetnaii.mongodb.net/?retryWrites=true&w=majority";
+const DB_URL = "mongodb://localhost:27017/jobPortal";
 
 // MongoDB
 mongoose

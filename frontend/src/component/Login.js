@@ -16,7 +16,7 @@ import { SetPopupContext } from "../App";
 
 import apiList from "../lib/apiList";
 import isAuth from "../lib/isAuth";
-import bg from "../assets/loginBg.gif";
+import bg from "../assets/login-bg.gif";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -93,7 +93,7 @@ const Login = (props) => {
           setPopup({
             open: true,
             severity: "error",
-            message: err.response.data.message,
+            message: err?.response?.data?.message,
           });
           console.log(err.response);
         });

@@ -18,7 +18,7 @@ import RecruiterProfile from "./component/recruiter/Profile";
 import MessagePopup from "./lib/MessagePopup";
 import { userType } from "./lib/isAuth";
 import ResumeBuilder from "./component/ResumeBuilder";
-import bg from "./assets/loginBg.gif";
+import bg from "./assets/login-bg.gif";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     minHeight: "100vh",
     paddingTop: "64px",
+    paddingRight: "200px",
+    paddingLeft: "200px",
     boxSizing: "border-box",
     width: "100%",
     backgroundImage: `url(${bg})`,
